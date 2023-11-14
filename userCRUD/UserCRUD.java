@@ -56,15 +56,15 @@ public class UserCRUD{
         int res = 0;
 
         try {
-            // Prepare the SQL query for user registration
+
             register = connection.prepareStatement("INSERT INTO \"users\" (\"reg_no\", \"firstName\", \"lastName\") VALUES (?, ?, ?)");
 
-            // Set the parameter values in the prepared statement
+            
             register.setString(1, id);
             register.setString(2, firstName);
             register.setString(3, lastName);
 
-            // Execute the insert query
+            
             res = register.executeUpdate();
 
             if (res > 0) {
@@ -74,11 +74,10 @@ public class UserCRUD{
             }
 
         } catch (SQLException ex) {
-            // Handle specific SQL exceptions or log them for debugging
             ex.printStackTrace();
             System.out.println("Error registering user. Please check your input.");
         } finally {
-            // Close the PreparedStatement and Connection in the finally block
+            
             try {
                 if (register != null) {
                     register.close();
